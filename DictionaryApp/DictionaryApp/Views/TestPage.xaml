@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:DictionaryApp.ViewModels"
+             x:Class="DictionaryApp.Views.TestPage">
+
+    <ContentPage.BindingContext>
+        <local:TestPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Text="{Binding TempText}"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button
+                Text="Click Me"
+                TextColor="White"
+                BackgroundColor="Salmon"
+                Command="{Binding Btn_Command}"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
