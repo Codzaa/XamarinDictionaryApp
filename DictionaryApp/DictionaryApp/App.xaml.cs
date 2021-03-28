@@ -13,7 +13,6 @@ namespace DictionaryApp
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

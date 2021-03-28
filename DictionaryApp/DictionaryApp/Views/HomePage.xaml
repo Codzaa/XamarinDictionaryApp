@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:DictionaryApp.ViewModels"
+             x:Class="DictionaryApp.Views.HomePage">
+    
+    <ContentPage.BindingContext>
+        <local:HomePageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <!--Total Size is 13-->
+            <Grid RowDefinitions="100,150,100,200"
+                  ColumnDefinitions="*,*,*,*"
+                  >
+                <BoxView
+                    Grid.Row="0"
+                    Grid.ColumnSpan="4"
+                    Color="{StaticResource Primary}"
+                    />
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="4"
+                    Text="English Dictionary"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    />
+                <BoxView
+                    Grid.Row="1"
+                    Grid.ColumnSpan="4"
+                    Color="FloralWhite"
+                    />
+                <Label
+                    Grid.Row="1"
+                    Grid.ColumnSpan="4"
+                    Text="Powered by Oxford Dictionary API"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    />
+                <BoxView
+                    Grid.Row="2"
+                    Grid.ColumnSpan="4"
+                    Color="FloralWhite"
+                    />
+                <Entry
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Placeholder="Enter Word"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    Text="{Binding WordToSearch}"
+                    />
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Text="{Binding SearchText}"
+                    TextColor="Black"
+                    BackgroundColor="#e0ab19"
+                    Command="{Binding BtnSearch_Command}"
+                    />
+                <BoxView
+                    Grid.Row="3"
+                    Grid.ColumnSpan="4"
+                    Color="{StaticResource Primary}"
+                    />
+                <Label
+                    Grid.Row="3"
+                    Grid.ColumnSpan="4"
+                    Text="{Binding WordDef}"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    />
+                <ActivityIndicator 
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Color="#1f1616"
+                    IsRunning="{Binding ActivityIndy}"/>
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

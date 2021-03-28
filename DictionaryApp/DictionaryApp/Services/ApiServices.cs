@@ -42,19 +42,23 @@ namespace DictionaryApp.Services
         }
 
         //
-        public async Task<Word> testFunction()
+        public async Task<Word> SearchForWordAsync(string wordToSearch)
         {
-            string endpoint = "entries/en-gb/eat";
+            string endpoint = "entries/en-gb/";
             var example = new StringContent("example",Encoding.UTF8,"application/json");
             try
             {
                 //var response = await client.PostAsync(endpoint,example);
-                var response = await client.GetAsync(endpoint);
+                var response = await client.GetAsync(endpoint+wordToSearch);
                 //response.EnsureSuccessStatusCode();
                 using(var stream = await response.Content.ReadAsStreamAsync())
                 using(var reader = new StreamReader(stream))
                 using(var json = new JsonTextReader(reader))
                 {
+                    if(json == null)
+                    {
+                        return null;
+                    }
                     var jsonContent = _serializer.Deserialize<Word>(json);
                     Console.WriteLine(reader.ReadToEnd());
                     return jsonContent;
